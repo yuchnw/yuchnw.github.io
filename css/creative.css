@@ -315,7 +315,7 @@ header.masthead p {
   right: 0;
   height: 100%;
   width: 100%;
-  opacity: 0.5;
+  opacity: 0;
   transition: .5s ease;
   background-color: rgba(118, 93, 160, 1);
 }
@@ -323,7 +323,9 @@ header.masthead p {
 .text {
   color: white;
   font-size: 20px;
+  position: absolute;
   top: 50%;
+  left: 25%;
   opacity: 1;
   /* -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
