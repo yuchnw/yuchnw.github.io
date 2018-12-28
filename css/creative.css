@@ -325,11 +325,12 @@ header.masthead p {
   font-size: 20px;
   position: absolute;
   top: 50%;
-  left: 50%;
+  opacity: 1;
   /* -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); */
   text-align: center;
+  font-weight: bold;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
