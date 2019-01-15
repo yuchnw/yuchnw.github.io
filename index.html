@@ -219,7 +219,6 @@
           <div class="col-lg-8 mx-auto text-center">
             <h2 class="section-heading text-white">ABOUT</h2>
             <hr class="light my-4">
-            <!-- <p class="text-faded mb-4">As a student in the MSR program here at Northwestern University, I am looking forward to gaining more technical knowledge of autonomous vehicles/drones and hope to get a chance to work in the real industry.</p> -->
             <p class="text-faded mb-4">As a student in the MSR program here at Northwestern University and the daughter of a pilot, I have a passion on autonomous vehicle and drones.
               And I am always waiting for an opportunity of building the coolest self-driving car or drone.
             </p>
@@ -442,11 +441,18 @@
                   <h2 class="text-uppercase">RRT Path Planning</h2>
                   <p class="item-intro text-muted">MSR Hackathon Project</p>
                   <img src="img/portfolio/fullsize/simple.png"></img>
-                  <li>Generate an RRT plot in a 100x100 domain with initial point at center.</li>
+                  <!-- <li>Generate an RRT plot in a 100x100 domain with initial point at center.</li> -->
+                  <p>Considering a domain D=[0,100]×[0,100], an initial configuration qinit=(50,50), and a stepsize Δq=1, 
+                    used the Euclidean metric for evaluating distance. Then constructed the RRT plot.</p>
                   <img src="img/portfolio/fullsize/circle.png"></img>
-                  <li>Generate an RRT plot with circular obstacles.</li>
+                  <!-- <li>Generate an RRT plot with circular obstacles.</li>
                   <li>Start from [10,10] and set goal at [75,75].</li>
-                  <li>Highlight the final path.</li>
+                  <li>Highlight the final path.</li> -->
+                  <p>Set the starting location at (10,10) and a goal location at (75,75). 
+                    For the representation of the environment, assume all things can produce collision are easily represented as circular. 
+                    This way, the collision checking can be performed analytically. To determine if a particular pair of vertices has a safe, 
+                    collision-free path between them, determine if the line connecting the nodes has an intersection with any of the circles. 
+                    The final path used by the RRT to go from the start state to the goal state is clearly highlighted.</p>
                   <p></p>
                   <p></p>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
