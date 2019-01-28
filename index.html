@@ -179,8 +179,8 @@
               <h3 class="mb-3">Robotics</h3>
               <p class="text-muted mb-0">Python</p>
               <p class="text-muted mb-0">ROS</p>
-              <p class="text-muted mb-0">C++</p>
               <p class="text-muted mb-0">Linux</p>
+              <p class="text-muted mb-0">PX4</p>
               <p class="text-muted mb-0">C</p>
             </div>
           </div>
@@ -568,11 +568,12 @@
                     <p class="item-intro text-muted">Ongoing MSR Project</p>
                     <img src="img/portfolio/fullsize/world.png"></img> 
                     <p></p>
-                    <li>The main goal of the project is to simulate the behavior of an Iris quadcopter in Gazebo world.
-                      The quadcopter is supposed to accomplish path planning and obstacle avoidance.</li>
-                    <li>At first, the quad will be given a gazebo world map with all the information of the obstacles(location, height, size, etc), as well as a destination point. 
-                      The Iris quadcopter should then using RRT to generate a 3D-trajectory which could optimize its way from current position to the destination.
-                      Then it should fly along the path with a stable controller written. </li>
+                    <li>This main goal of this project is to simulate the behavior of an Iris quadcopter based on PX4 firmware in a Gazebo world.</li>
+                    <li>The quadcopter is supposed to accomplish an 3D motion planning. 
+                      At first, the quad will be given a map containing all the obstacles and a destination point. 
+                      It will use RRT algorithm to generate an optimized path to reach the goal and avoid collisions. 
+                      The entire movement of the drone should be smooth, safe and robust.</li>
+                    <li>PX4 is the autopilot platform used to establishes the connection between ROS and Gazebo simulation via MAVROS.</li>
                     <p></p>
                     <img src="img/portfolio/fullsize/onboard_cam.png"></img>
                     <li>This would be the image view from the Iris onboard camera.</li>
