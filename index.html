@@ -459,6 +459,11 @@
                     collision-free path between them, determine if the line connecting the nodes has an intersection with any of the circles. 
                     The final path used by the RRT to go from the start state to the goal state is clearly highlighted.</p>
                   <p></p>
+                  <embed src="https://plot.ly/~yuchnw/9.embed" width="1000" height="1000">
+                  <p>This is the updated 3D version of RRT algorithm. The basic idea is still the same as 2D RRT. 
+                    After getting a feasible path, I smoothed it to reduce the number of waypoints. 
+                    Generally, since the feasible path has been generated from the RRT-grown tree, and it consists of a chain of nodes connections, 
+                    the optimization process is conducted by randomly picking up two nodes from the feasible path, and trying to connect them directly.</p>
                   <p></p>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fas fa-times"></i>
