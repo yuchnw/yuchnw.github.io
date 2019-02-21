@@ -574,14 +574,17 @@
                     <iframe width="640" height="360" src="https://www.youtube.com/embed/zPKlL9mI_Lc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <p></p>
                     <li>This main goal of this project is to simulate the behavior of an Iris quadcopter based on PX4 firmware in a Gazebo world.</li>
+                    <p></p>
                     <li>The quadcopter is supposed to accomplish an 3D motion planning. 
                       At first, the quad will be given a map containing all the obstacles, a initial point and a destination point. 
                       It will use RRT algorithm to generate an feasible path to reach the goal and avoid collisions. Then it will optimize the path by reducing the number of waypoints.
                       The whole motion of the drone should be smooth, safe and robust.</li>
+                    <p></p>
                     <li>PX4 is the autopilot platform used to establishes the connection between ROS and Gazebo simulation via MAVROS.</li>
                     <p></p>
-                    <embed src="https://plot.ly/~yuchnw/11.embed" width="1000" height="1000">
-                    <li>This is the result of the 3D RRT path planning algorithm.</li>
+                    <embed src="https://plot.ly/~yuchnw/11.embed" width="800" height="800">
+                    <li>This is the result of the 3D RRT path planning algorithm. Black lines are all the nodes connections,
+                       the green line is the feasible path and the blue line is the optimized path.</li>
                     <p></p>
                     <img src="img/portfolio/fullsize/onboard_cam.png"></img>
                     <li>This would be the image view from the Iris onboard camera. Further step is to launch multiple UAVs in this map and add computer vision part.</li>
