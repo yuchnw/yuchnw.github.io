@@ -571,26 +571,41 @@
                     <!-- Project Details Go Here -->
                     <h2 class="text-uppercase">Iris Quadcopter Gazebo Simulation</h2>
                     <p class="item-intro text-muted">Ongoing MSR Project</p>
-                    <iframe width="640" height="360" src="https://www.youtube.com/embed/zPKlL9mI_Lc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <img width="1000" height="542" src="img/portfolio/fullsize/bar-fly.gif"></img>
+                    <h3>Introduction</h3>>
+                    <p>This main goal of this project is to simulate the behavior of an Iris quadcopter based on PX4 firmware in a Gazebo world. 
+                      The quadcopter is supposed to accomplish an 3D motion planning. At first, the quad will be given a map containing all the obstacles and 
+                      a destination point. It will use RRT algorithm to generate an optimized path to reach the goal and avoid collisions. 
+                      The whole motion of the drone should be smooth, safe and robust.</p>
                     <p></p>
-                    <li>This main goal of this project is to simulate the behavior of an Iris quadcopter based on PX4 firmware in a Gazebo world.</li>
+                    <h3>PX4</h3>
+                    <lp>PX4 is the autopilot control platfrom used in this project. It establishes the connection between ROS and Gazebo simulation via MAVROS. 
+                      PX4 supports both Software In the Loop (SITL) simulation, where the flight stack runs on computer (either the same computer or another 
+                      computer on the same network) and Hardware In the Loop (HITL) simulation using a simulation firmware on a real flight controller board.</p>
                     <p></p>
-                    <li>The quadcopter is supposed to accomplish an 3D motion planning. 
-                      At first, the quad will be given a map containing all the obstacles, a initial point and a destination point. 
-                      It will use RRT algorithm to generate an feasible path to reach the goal and avoid collisions. Then it will optimize the path by reducing the number of waypoints.
-                      The whole motion of the drone should be smooth, safe and robust.</li>
+                    <h3>MAVROS--MAVLink</h3>
+                    <p>MAVROS is a ROS package which provides communication driver for various autopilots with MAVLink communication protocal. 
+                      MAVROS can be used to communicate with any MAVLink enabled autopilot, and for this specific project it will be only used to enable 
+                      communication between the PX4 flight stack and a ROS enabled companion computer.</p>
                     <p></p>
-                    <li>PX4 is the autopilot platform used to establishes the connection between ROS and Gazebo simulation via MAVROS.</li>
-                    <p></p>
+                    <h3>ROS with Gazebo</h3>
+                    <p>ROS can be used with PX4 and the Gazebo simulator. As the picture below indicates, PX4 communicates with Gazebo to receive sensor data from the simulated 
+                      world and send motor and actuator values. It communicates with the GCS and ROS to send telemetry from the simulated environment and receive commands.</p>
+                    <h3>3D-RRT</h3>
                     <embed src="https://plot.ly/~yuchnw/11.embed" width="800" height="800">
                     <li>This is the result of the 3D RRT path planning algorithm. Black lines are all the nodes connections,
                        the green line is the feasible path and the blue line is the optimized path.</li>
                     <p></p>
-                    <img src="img/portfolio/fullsize/onboard_cam.png"></img>
-                    <li>This would be the image view from the Iris onboard camera. Further step is to launch multiple UAVs in this map and add computer vision part.</li>
+                    <p>After getting a feasible path(the green one), I smoothed it to reduce the number of waypoints(the blue one).
+                       Generally, since the feasible path has been generated from the RRT-grown tree, and it consists of a chain of nodes connections, 
+                       the optimization process is conducted by randomly picking up two nodes from the feasible path, and trying to connect them directly.
+                        Here is the result of the Optimized Path. It takes a more complicated obstacle environment and applies the RRT algorithm. 
+                        The feasible path has 102 waypoints and the number was reduced to 8 after optimization.</p>
                     <p></p>
-                    <li>For more details about the project please check
-                      <a href="https://github.com/yuchnw/quadSimulator">HERE</a></li>
+                    <iframe width="640" height="360" src="https://www.youtube.com/embed/zPKlL9mI_Lc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <!-- <img src="img/portfolio/fullsize/onboard_cam.png"></img> -->
+                    <!-- <li>This would be the image view from the Iris onboard camera. Further step is to launch multiple UAVs in this map and add computer vision part.</li> -->
+                    <!-- <p></p> -->
                     <p>STAY TUNED for More Updates...</p>
                     <button class="btn btn-primary" data-dismiss="modal" type="button">
                       <i class="fas fa-times"></i>
