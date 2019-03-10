@@ -224,8 +224,8 @@
           <div class="col-lg-8 mx-auto text-center">
             <h2 class="section-heading text-white">ABOUT</h2>
             <hr class="light my-4">
-            <p class="text-faded mb-4">As a student in the MSR program here at Northwestern University and the daughter of a pilot, I have a passion on autonomous vehicle and drones.
-              And I am always waiting for an opportunity of building the coolest self-driving car or drone.
+            <p class="text-faded mb-4">As the daughter of a pilot, I have a passion on autonomous vehicle and drones.
+              And I am always waiting for an opportunity of building the coolest robot and changing the world.
             </p>
             <p class="text-faded mb-4">Currently looking for 2019 summer internship.</p>
             <a class="btn btn-light btn-xl js-scroll-trigger" href="https://www.mccormick.northwestern.edu/robotics/meet-students/profiles-2018-2019/wang-yuchen.html">More Info</a>
@@ -654,6 +654,54 @@
                     of the youBot mobile manipulator (a mobile base with four mecanum wheels and a 5R robot arm), 
                     performs odometry as the chassis moves, and performs feedback control to drive the youBot to pick up a block at a specified location,
                      carry it to a desired location, and put it down.</p>
+                  <p></p>
+                  <h3>Reference Trajectory Generation</h3>
+                  <p>Given eight configurations indicating the relationship between end-effector, cube and world frame under different conditions, 
+                    generate a reference trajectory for the gripper on frame {e}.
+                    The output is written to a cvs file containing 13 attributes: r11, r12, r13, r21, r22, r23, r31, r32, r33, px, py, pz, gripper state</p>
+                  <img src="img/portfolio/fullsize/Tse.png"></img>
+                  <h3>Kinematics Simulator for KUKA youBot</h3>
+                  <p>Given the current configuration of youBot (Chassis phi, Chassis x, Chassis y, J1, J2, J3, J4, J5, W1, W2, W3, W4, Gripper), 
+                    joints speed and wheel speed, return the next configuration of the robot after a short time dt(default as 0.01s).</p>
+                  <p></p>
+                  <h3>Forward Control</h3>
+                  <p>The feedback control of the the mobile manipulator is given by kinematic task-space feedforward plus feedback control law:</p>
+                  <img src="img/portfolio/fullsize/control_law.png"></img>
+                  <li>Given the current, next and actual end-effector configurations, PI controller gains, return the commanded end-effector twist V and the error list of each joint.</li>
+                  <li>Given the joint angles, Body Jacobians and several other configurations, return the Jacobian of robot arm and base.</li>
+                  <p></p>
+                  <button class="btn btn-primary" data-dismiss="modal" type="button">
+                    <i class="fas fa-times"></i>
+                    Close Project</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 11 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal11" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <h2 class="text-uppercase">shriekinDesparado Chatbot</h2>
+                  <p class="item-intro text-muted">Conversational AI using Attention Model</p>
+                  <img width="1000" height="530" src="img/portfolio/fullsize/chatbot.gif"></img>
+                  <p>The main goal of this project is to implement a chit-chat bot using Transformer, which is a state-of-art model with Attention based on the paper 
+                    from Google Brain, "<a href = "https://arxiv.org/abs/1706.03762">Attention is All You Need</a>".</p>
+                  <p></p>
+                  <p>Through the command line interface, a can run the eval.py script and then interact with the chatbot by typing in prompts directly on the command line. Based on the data on which the model is trained, an appropriate response will be constructed and printed at the command line.</p>
                   <p></p>
                   <h3>Reference Trajectory Generation</h3>
                   <p>Given eight configurations indicating the relationship between end-effector, cube and world frame under different conditions, 
