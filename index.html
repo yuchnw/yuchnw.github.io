@@ -127,7 +127,7 @@
             </a>
           </div>
           <div class="col-lg-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal11">
               <img class="img-fluid" src="img/portfolio/fullsize/megabot.jpg" alt="">
               <div class="overlay">
                 <div class="text">MEGABOT Localization</div>
@@ -703,10 +703,9 @@
                   <p></p>
                   <p>Through the command line interface, a can run the eval.py script and then interact with the chatbot by typing in prompts directly on the command line. Based on the data on which the model is trained, an appropriate response will be constructed and printed at the command line.</p>
                   <p></p>
-                  <h3>Reference Trajectory Generation</h3>
-                  <p>Given eight configurations indicating the relationship between end-effector, cube and world frame under different conditions, 
-                    generate a reference trajectory for the gripper on frame {e}.
-                    The output is written to a cvs file containing 13 attributes: r11, r12, r13, r21, r22, r23, r31, r32, r33, px, py, pz, gripper state</p>
+                  <h3>Data and Pre-processing</h3>
+                  <p>One major part of this project is to collect and preprocess as much data as we could to feed into the model and improve the performance.
+                     There are several dataset source being used for this project: Cornell Movie Dialogs Corpus(http://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html), Twitter Chat Corpus, Ubuntu Chat Dialogues and [Reddit Comment Threads](https://www.reddit.com/r/datasets/comments/3bxlg7/i_have_every_publicly_available_reddit_comment/).</p>
                   <img src="img/portfolio/fullsize/Tse.png"></img>
                   <h3>Kinematics Simulator for KUKA youBot</h3>
                   <p>Given the current configuration of youBot (Chassis phi, Chassis x, Chassis y, J1, J2, J3, J4, J5, W1, W2, W3, W4, Gripper), 
