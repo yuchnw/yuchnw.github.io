@@ -586,6 +586,8 @@
                       The quadcopter is supposed to accomplish an 3D motion planning. At first, the quad will be given a map containing all the obstacles and 
                       a destination point. It will use RRT algorithm to generate an optimized path to reach the goal and avoid collisions. 
                       The whole motion of the drone should be smooth, safe and robust.</p>
+                    <p>Other than that, the quad should also be able to track the position of the user's fingertip in 3D real world and let itself fly following the 
+                      trace of the fingertip movement.</p>
                     <p></p>
                     <h3>PX4</h3>
                     <lp>PX4 is the autopilot control platfrom used in this project. It establishes the connection between ROS and Gazebo simulation via MAVROS. 
@@ -625,6 +627,10 @@
                        skin color histogram is a useful technique here. The program is taking 9 skin color samples from the user’s hand and then creates a histogram, 
                        using the ROI matrix for the skin color and normalizing this matrix. Then OpenCV will take this histogram to seperate the hand feature from the 
                        image and apply the skin color to the frame. After that, I find the max contour and calculat the centroid and farthest point from the centroid (which is the longest fingertip).</p>
+                    <p>ASUS Xtion Pro depth camera is the deviced I used to capture the 3D position of the fingertip. First I calibrated the RGB image with the depth map to make both are
+                       coordinate-aligned. Then I run the OpenCV script on the RGB frame to find the X-Y position of the tip, then parse the pixel value to the depth array generated from 
+                       the depth camera and get the distance between the fingertip to the lense. As the user moves the hand either far away to the camera or close to it, the quadcopter can 
+                      also adjust its altitute respectively.</p>
                     <p></p>
                     <p>Here is the demo of the fingertip tracking result: (to keep the frame clean, only the last 20 fingertip trace would be displayed on the screen)</p>
                     <img width="800" height="640" src="img/portfolio/fullsize/finger.gif"></img>
@@ -707,11 +713,12 @@
                   <h2 class="text-uppercase">shriekinDesparado Chatbot</h2>
                   <p class="item-intro text-muted">Conversational AI using Attention Model</p>
                   <img width="800" height="536" src="img/portfolio/fullsize/chatbot.gif"></img>
+                  <h3>Introduction</h3>
                   <p>The main goal of this project is to implement a chit-chat bot using Transformer, which is a state-of-art model with Attention based on the paper 
                     from Google Brain, "<a href = "https://arxiv.org/abs/1706.03762">Attention is All You Need</a>".</p>
                   <p></p>
-                  <p>Through the command line interface, a can run the eval.py script and then interact with the chatbot by typing in prompts directly on the command line. Based on the data on which the model is trained, an appropriate response will be constructed and printed at the command line.</p>
-                  <p></p>
+                  <p>Through the command line interface, a can run the eval.py script and then interact with the chatbot by typing in prompts directly on the command line. Based on the data on 
+                    which the model is trained, an appropriate response will be constructed and printed at the command line.</p>
                   <h3>Data and Pre-processing</h3>
                   <p>One major part of this project is to collect and preprocess as much data as we could to feed into the model and improve the performance.
                      There are several dataset source being used for this project: <a href="http://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html">Cornell Movie Dialogs Corpus</a>,
