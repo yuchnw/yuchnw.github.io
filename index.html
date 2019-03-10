@@ -90,10 +90,18 @@
             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal9">
               <img class="img-fluid" src="img/portfolio/fullsize/iris.jpg" alt="">
               <div class="overlay">
-                <div class="text">Quadcopter Path Planning</div>
+                <div class="text">Quadcopter Finger Tracking and Path Planning</div>
               </div>
             </a>
           </div>
+          <div class="col-lg-4 col-sm-6 portfolio-item">
+              <a class="portfolio-link" data-toggle="modal" href="#portfolioModal11">
+                <img class="img-fluid" src="img/portfolio/fullsize/chat.png" alt="">
+                <div class="overlay">
+                  <div class="text">Conversational AI</div>
+                </div>
+              </a>
+            </div>
           <div class="col-lg-4 col-sm-6 portfolio-item">
             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal8">
               <img class="img-fluid" src="img/portfolio/fullsize/dermatology.jpg" alt="">
@@ -111,6 +119,14 @@
             </a>
           </div>
           <div class="col-lg-4 col-sm-6 portfolio-item">
+              <a class="portfolio-link" data-toggle="modal" href="#portfolioModal10">
+                <img class="img-fluid" src="img/portfolio/fullsize/kuka_tbn.png" alt="">
+                <div class="overlay">
+                  <div class="text">KUKA Motion Planning</div>
+                </div>
+              </a>
+            </div>
+          <div class="col-lg-4 col-sm-6 portfolio-item">
             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
               <img class="img-fluid" src="img/portfolio/fullsize/tracker.jpg" alt="">
               <div class="overlay">
@@ -118,22 +134,15 @@
               </div>
             </a>
           </div>
-          <div class="col-lg-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal10">
-              <img class="img-fluid" src="img/portfolio/fullsize/kuka_tbn.png" alt="">
-              <div class="overlay">
-                <div class="text">KUKA Motion Planning</div>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal11">
-              <img class="img-fluid" src="img/portfolio/fullsize/megabot.jpg" alt="">
-              <div class="overlay">
-                <div class="text">MEGABOT Localization</div>
-              </div>
-            </a>
-          </div>
+         
+          <!-- <div class="col-lg-4 col-sm-6 portfolio-item">
+              <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+                <img class="img-fluid" src="img/portfolio/fullsize/megabot.jpg" alt="">
+                <div class="overlay">
+                  <div class="text">MEGABOT Localization</div>
+                </div>
+              </a>
+            </div> -->
           <!-- <div class="col-lg-4 col-sm-6 portfolio-item">
             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
               <img class="img-fluid" src="img/portfolio/fullsize/field.jpg" alt="">
@@ -697,7 +706,7 @@
                   <!-- Project Details Go Here -->
                   <h2 class="text-uppercase">shriekinDesparado Chatbot</h2>
                   <p class="item-intro text-muted">Conversational AI using Attention Model</p>
-                  <img width="1000" height="530" src="img/portfolio/fullsize/chatbot.gif"></img>
+                  <img width="800" height="536" src="img/portfolio/fullsize/chatbot.gif"></img>
                   <p>The main goal of this project is to implement a chit-chat bot using Transformer, which is a state-of-art model with Attention based on the paper 
                     from Google Brain, "<a href = "https://arxiv.org/abs/1706.03762">Attention is All You Need</a>".</p>
                   <p></p>
@@ -705,17 +714,20 @@
                   <p></p>
                   <h3>Data and Pre-processing</h3>
                   <p>One major part of this project is to collect and preprocess as much data as we could to feed into the model and improve the performance.
-                     There are several dataset source being used for this project: Cornell Movie Dialogs Corpus(http://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html), Twitter Chat Corpus, Ubuntu Chat Dialogues and [Reddit Comment Threads](https://www.reddit.com/r/datasets/comments/3bxlg7/i_have_every_publicly_available_reddit_comment/).</p>
-                  <img src="img/portfolio/fullsize/Tse.png"></img>
-                  <h3>Kinematics Simulator for KUKA youBot</h3>
-                  <p>Given the current configuration of youBot (Chassis phi, Chassis x, Chassis y, J1, J2, J3, J4, J5, W1, W2, W3, W4, Gripper), 
-                    joints speed and wheel speed, return the next configuration of the robot after a short time dt(default as 0.01s).</p>
-                  <p></p>
-                  <h3>Forward Control</h3>
-                  <p>The feedback control of the the mobile manipulator is given by kinematic task-space feedforward plus feedback control law:</p>
-                  <img src="img/portfolio/fullsize/control_law.png"></img>
-                  <li>Given the current, next and actual end-effector configurations, PI controller gains, return the commanded end-effector twist V and the error list of each joint.</li>
-                  <li>Given the joint angles, Body Jacobians and several other configurations, return the Jacobian of robot arm and base.</li>
+                     There are several dataset source being used for this project: <a href="http://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html">Cornell Movie Dialogs Corpus</a>,
+                      Twitter Chat Corpus, Ubuntu Chat Dialogues and <a href="https://www.reddit.com/r/datasets/comments/3bxlg7/i_have_every_publicly_available_reddit_comment/">Reddit Comment Threads</a>.</p>
+                  <p>All these raw data are in different formats, size, and storage methods. In order to apply all of these data to one model, we have to pre-process them. NLTK and Regex have been the two mainly used tools for our data pre-processing.</p>
+                  <p>Below is the result of an unsuccessful data-preprocessing, where the source data contains a lot of long-term complex words</p>
+                  <img src="img/portfolio/fullsize/badChatbot.png"></img>
+                  <h3>Attention Model</h3>
+                  <p>With an attention mechanism we no longer try encode the full source sentence into a fixed-length vector. Rather, we allow the decoder 
+                    to “attend” to different parts of the source sentence at each step of the output generation. Importantly, we let the model learn what to attend
+                     to based on the input sentence and what it has produced so far.</p>
+                  <h3>Deployment</h3>
+                  <p>Using a pretrained model can expedite your chatbot experience. <a href="https://drive.google.com/open?id=1Tk3K46neJPiC2KITnt_fhLSLhBL0F8p3">Twitter Corpus Trained model</a> is a zip file with pretrained hyperparameters.
+                      Simply extract it and run evalcopy.py could launch the interface of the chatbot.</p>
+                  <h3>Required Packages</h3>
+                  <li>Numpy, Tensorflow, NLTK, Regex, JSON, GPU(for optimized running)</li>
                   <p></p>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fas fa-times"></i>
