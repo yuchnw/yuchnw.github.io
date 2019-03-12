@@ -586,8 +586,7 @@
                       The quadcopter is supposed to accomplish an 3D motion planning. At first, the quad will be given a map containing all the obstacles and 
                       a destination point. It will use RRT algorithm to generate an optimized path to reach the goal and avoid collisions. 
                       The whole motion of the drone should be smooth, safe and robust.</p>
-                    <p>Other than that, the quad should also be able to track the position of the user's fingertip in 3D real world and let itself fly following the 
-                      trace of the fingertip movement.</p>
+                    <p>Other than that, the quad could also be manipulated by hand-gesture to navigate in complex aerial space.</p>
                     <p></p>
                     <h3>PX4</h3>
                     <lp>PX4 is the autopilot control platfrom used in this project. It establishes the connection between ROS and Gazebo simulation via MAVROS. 
@@ -624,7 +623,7 @@
                     <h3>Tracking</h3>
                     <p>First, I used OpenCV to track my hand's movement and find the farthest fingertip. As my hand moves, the fingertip will create a path that could 
                       be used as the desired trajectory for the quad in Gazebo. Since the lightning condition and different skin color would affect the tracking performance a lot,
-                       skin color histogram is a useful technique here. The program is taking 9 skin color samples from the user’s hand and then creates a histogram, 
+                       skin color histogram is a useful technique here. The program is taking 900 skin color samples from the user’s hand and then creates a histogram, 
                        using the ROI matrix for the skin color and normalizing this matrix. Then OpenCV will take this histogram to seperate the hand feature from the 
                        image and apply the skin color to the frame. After that, I find the max contour and calculat the centroid and farthest point from the centroid (which is the longest fingertip).</p>
                     <p>ASUS Xtion Pro depth camera is the deviced I used to capture the 3D position of the fingertip. First I calibrated the RGB image with the depth map to make both are
