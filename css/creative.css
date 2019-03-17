@@ -43,6 +43,11 @@ h6 {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
+img {
+  width: 100%;
+   height: auto;
+}
+
 .bg-primary {
   background-color: #4E2A84 !important;
 }
