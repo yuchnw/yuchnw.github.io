@@ -175,10 +175,10 @@
               </a>
             </div>
           <div class="col-lg-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal8">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal12">
               <img class="img-fluid" src="img/portfolio/fullsize/dermatology.jpg" alt="">
               <div class="overlay">
-                <div class="text">Dermatology Diagnose</div>
+                <div class="text">Quadrotor Autonomous Control</div>
               </div>
             </a>
           </div>
@@ -197,7 +197,15 @@
                   <div class="text">KUKA Motion Planning</div>
                 </div>
               </a>
-            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 portfolio-item">
+                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal8">
+                  <img class="img-fluid" src="img/portfolio/fullsize/dermatology.jpg" alt="">
+                  <div class="overlay">
+                    <div class="text">Dermatology Diagnose</div>
+                  </div>
+                </a>
+          </div>
           <div class="col-lg-4 col-sm-6 portfolio-item">
             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
               <img class="img-fluid" src="img/portfolio/fullsize/tracker.jpg" alt="">
@@ -205,6 +213,22 @@
                 <div class="text">Ball Tracker</div>
               </div>
             </a>
+          </div>
+          <div class="col-lg-4 col-sm-6 portfolio-item">
+                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+                  <img class="img-fluid" src="img/portfolio/fullsize/rrt.jpg" alt="">
+                  <div class="overlay">
+                    <div class="text">RRT Path Planning</div>
+                  </div>
+                </a>
+          </div>
+          <div class="col-lg-4 col-sm-6 portfolio-item">
+              <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+                <img class="img-fluid" src="img/portfolio/fullsize/butt.jpg" alt="">
+                <div class="overlay">
+                  <div class="text">Sacral Nerve Stimulator</div>
+                </div>
+              </a>
           </div>
          
           <!-- <div class="col-lg-4 col-sm-6 portfolio-item">
@@ -391,7 +415,7 @@
                   <img src="img/portfolio/fullsize/sacral.jpg"></img>
                   <p></p>
                   <li>Designed and built an implant nerve stimulator for patients suffering from urine incontinence.</li>
-                  <li>Programmed a microcontroller in C to generate continuous electrical pulse.</li>
+                  <li>Programmed microcontroller in C to generate continuous electrical pulse.</li>
                   <li>Implemented inductive charging to transfer the pulse signal through skin and applied it to nerve.</li>
                   <li>Collaborated with three other ECE senior students and communicated with client in Nepal.</li>
                   <p></p>
@@ -579,7 +603,7 @@
                   <div class="modal-body">
                     <!-- Project Details Go Here -->
                     <h2 class="text-uppercase">Iris Quadcopter Gazebo Simulation</h2>
-                    <p class="item-intro text-muted">Ongoing MSR Project</p>
+                    <p class="item-intro text-muted">Individual Project</p>
                     <h3>Autonomous Path Planning</h3>
                     <img width="800" height="434" src="img/portfolio/fullsize/bar-fly.gif"></img>
                     <p></p>
@@ -739,6 +763,50 @@
                       Simply extract it and run evalcopy.py could launch the interface of the chatbot.</p>
                   <h3>Required Packages</h3>
                   <li>Numpy, Tensorflow, NLTK, Regex, JSON, GPU(for optimized running)</li>
+                  <p></p>
+                  <button class="btn btn-primary" data-dismiss="modal" type="button">
+                    <i class="fas fa-times"></i>
+                    Close Project</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 12 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal12" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <h2 class="text-uppercase">HOMMIE: the Quadrotor</h2>
+                  <p class="item-intro text-muted">Conversational AI using Attention Model</p>
+                  <img width="800" height="450" src="img/portfolio/fullsize/quadrotor.gif"></img>
+                  <h3>Introduction</h3>
+                  <p>The main idea of this project is to perform real time embedded control for an autonomous electromechanical system.</p>
+                  <h3>Build</h3>
+                  <p>Assemble a quadrotor from commodity parts including IMU, RaspberryPi, PWM board, chasis and motors.</p>
+                  <p>Below is the picture of the quadrotor.</p>
+                  <img src="img/portfolio/fullsize/quad.jpg"></img>
+                  <h3>PID Control</h3>
+                  <p>Create the software for controlling quadrotor in both high and low level.</p>
+                  <p>First of all I calibrated IMU to reset the aircraft principle axes, added PID controller for pitch, roll and yaw, as well as the joystick thrust. 
+                    And then finely tuned the gains so that the quad could fly smoothly without oscillation. The quad could be manipulated easily and stably by joystick commands. Here is the example of joystick control flight.</p>
+                  <img width="800" height="450" src="img/portfolio/fullsize/fly.gif"></img>
+                  <h3>Autonomous Flight</h3>
+                  <p>The quad will receive IR light transmitted by HTC Vive Lighthouse, which could return the current X, Y, Z and theta value of the quad. 
+                    I calibrated and filtered the vive sensor data to reduce noise first. Then added higher level PID controller to the offset of current coordinate above the 
+                    original lower level Pitch-Roll-Yaw-Thrust controller. Finely tuned the gains to make sure the quad could hold its position at a fixed location. (Shown in the GIF at top)</p>
                   <p></p>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fas fa-times"></i>
