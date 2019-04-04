@@ -534,26 +534,45 @@
               <div class="col-lg-12 mx-auto">
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Baxter Tower Stacking</h2>
+                  <h2 class="text-uppercase">BAXTACK: Baxter Tower Stacking</h2>
                   <p class="item-intro text-muted">MSR Course Project</p>
-                  <iframe width="640" height="360" src="https://www.youtube.com/embed/SKFFj9aCwcA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <img width="800" height="450" src="img/portfolio/fullsize/baxtack.gif"></img>
                   <p></p>
-                  <li>A simplified block-version of Hanoi Tower.</li>
-                  <li>The Baxter is able to recognize all the blocks on the table through image processing.
-                    The location, size and color information of the blocks will be passed to the robot and it will calculate the goal position of each movement.
-                    The robot arm picks up the largest block first and places it to a fixed position.
-                    Then it repeats the previous step by finding a smaller block and stacking it on the previous one.
-                  </li>
-                  <p></p>
+                  <h3>Objective</h3>
+                  <p>The goal of this project is for Baxter to pick different blocks on the table by color and size, and stack them together.</p>
                   <img width="650" height="350" src="img/portfolio/fullsize/color_pick.jpg"></img>
-                  <li>Click on the image and pick the target color of the blocks.</li>
-                  <p></p>
-                  <img width="650" height="350" src="img/portfolio/fullsize/tower.jpg"></img>
-                  <li>Baxter arm picks all the blocks and stacks them by size.</li>
-                  <p></p>
-                  <li>For more details about the project please check
-                    <a href="https://github.com/yuchnw/tower_stacking">HERE</a></li>
-                  <p></p>
+                  <h3>Basic Introduction</h3>>
+                  <p>The Baxter is able to recognize all the blocks on the table through image processing. The location, size and color information of 
+                    the blocks will be passed to the robot and it will calculate the goal position of each movement. The robot arm picks up the largest 
+                    block first and places it to a fixed position. Then it repeats the previous step by finding a smaller block and stack it on the previous one.</p>
+                  <p>All the blocks were 3D printed, with different size ranging from 2"x2"x2" up to 3"x3"x2". The color of the blocks are either red or yellow.</p>
+                  <h3>Computer Vision</h3>
+                  <p>Baxter's right hand camera has a decent resolution that works well in the project, so there is no need of using an external web cam. 
+                    A node was written to process the raw image data basically using OpenCV library. When the user clicks on the camera image view and picks a color,
+                     the node would fetch the RGB value of the pixel being clicked and set a boundary range based on that value (in our case the boundary was
+                      ([B-30, G-30, R-30],[B+30, G+30, R+30])). All the contours that matches the RGB boundary would be detected and labeled. Then the contours 
+                      will be sorted by area and listed from the largest to the smallest. The node will finally publish a topic containing the center coordinates 
+                      of all the contours(sorted by area) in pixel value, and the angles that each contour tilted with respect to x-axis.</p>
+                  <h3>Translation from Pixel Coordinate to World Coordinate</h3>
+                  <li>Our group is using the baxter right hand camera to capture the blocks' position on the table. Their positions are caculated from the 
+                    blocks' pixel coordinates published by the computer vision. The caculation is based on the following function.</li>>
+                    <a href="https://www.codecogs.com/eqnedit.php?latex=s\begin{bmatrix}u\\v\\1\end{bmatrix}=\begin{bmatrix}\alpha_x&space;&&space;0&space;&&space;u_0&space;&&space;0\\&space;0&space;&&space;\alpha_y&space;&&space;v_0&space;&&space;0\\&space;0&space;&&space;0&space;&&space;1&space;&&space;0\end{bmatrix}\begin{bmatrix}R&space;&&space;t\\0&space;&&space;0\end{bmatrix}\begin{bmatrix}x_\omega\\&space;y_\omega\\&space;z_\omega\\&space;1\end{bmatrix}=M_1M_2X_\omega" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s\begin{bmatrix}u\\v\\1\end{bmatrix}=\begin{bmatrix}\alpha_x&space;&&space;0&space;&&space;u_0&space;&&space;0\\&space;0&space;&&space;\alpha_y&space;&&space;v_0&space;&&space;0\\&space;0&space;&&space;0&space;&&space;1&space;&&space;0\end{bmatrix}\begin{bmatrix}R&space;&&space;t\\0&space;&&space;0\end{bmatrix}\begin{bmatrix}x_\omega\\&space;y_\omega\\&space;z_\omega\\&space;1\end{bmatrix}=M_1M_2X_\omega" title="s\begin{bmatrix}u\\v\\1\end{bmatrix}=\begin{bmatrix}\alpha_x & 0 & u_0 & 0\\ 0 & \alpha_y & v_0 & 0\\ 0 & 0 & 1 & 0\end{bmatrix}\begin{bmatrix}R & t\\0 & 0\end{bmatrix}\begin{bmatrix}x_\omega\\ y_\omega\\ z_\omega\\ 1\end{bmatrix}=M_1M_2X_\omega" /></a>
+                  <li>The intrinsic matrix M_1 is get from the camera calibration using ROS package camera_calibration . 
+                    The external matrix  M_2 is obtained from the TF tree from camera to base. Since the table is flat, the z coordinate of the blocks 
+                    can be obtained from the IR range sensor in the left hand.</li>
+                  <h3>Control</h3>
+                  <p>Baxter was programmed to begin at the same initial position each time. Then when list of blocks' positions reached, the robot arm were 
+                    programmed to reach the certain height over the block, and then the robot arm came down to pick the block. After that, 
+                    the arm moved to the goal position to place the blocks.</p>
+                  <p>For the robot arm control, Cartesian Path Planner Plug-In in MoveIt was used to generate waypoints between beginning position and goal position.
+                     So that the robot arm won't move in unusual way and avoid hitting obstacles. And then, MoveIT planner was used to generate plan to make 
+                     the arm move to the goal position along the waypoints.</p>
+                  <p>During the movement, the ranger in the left hand was used to detect whether the block was attached to the baxter's left hand successfully or not. 
+                    If the distance from left hand was less than 0.1m, the baxter will assume that the block was not picked successfully. 
+                    Then in the next placement, the height of the block being placed will not increase and also the baxter would came to the pick block again, 
+                    which were not being picked successfully at last time.</p>
+                  <h3>Full Demo Video</h3>
+                  <iframe width="640" height="360" src="https://www.youtube.com/embed/SKFFj9aCwcA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fas fa-times"></i>
                     Close Project</button>
@@ -657,8 +676,6 @@
                     <p>The project is able to take differnt commands to arm, disarm, takeoff, land the quad and return its geographic coordinates. 
                       Also, it can receive the path generated by RRT algorithm and let the quad follow it. Here is the full demo video:</p>
                     <iframe width="640" height="360" src="https://www.youtube.com/embed/zPKlL9mI_Lc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <!-- <img src="img/portfolio/fullsize/onboard_cam.png"></img> -->
-                    <!-- <li>Further step is to launch multiple UAVs in this map and add computer vision part.</li> -->
                     <p></p>
                     <h3>Tracking</h3>
                     <p>First, I used OpenCV to track my hand's movement and find the farthest fingertip. As my hand moves, the fingertip will create a path that could 
@@ -863,7 +880,6 @@
                     surface, the ball would bounce against the surface. For the rotating bar, I consider it as a rotating body frame. If the body frame coordinate 
                     of any of the four vertices overlaps with the bar, the ball will also bounce back. All the impacts in this system are elastic.</p>
                   <img width="800" height="800" src="img/portfolio/fullsize/handdraw.png"></img>
-                  <p></p>
                   <hr>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fas fa-times"></i>
