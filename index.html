@@ -540,8 +540,7 @@
                   <p></p>
                   <h3>Objective</h3>
                   <p>The goal of this project is for Baxter to pick different blocks on the table by color and size, and stack them together.</p>
-                  <img width="650" height="350" src="img/portfolio/fullsize/color_pick.jpg"></img>
-                  <h3>Basic Introduction</h3>>
+                  <h3>Basic Introduction</h3>
                   <p>The Baxter is able to recognize all the blocks on the table through image processing. The location, size and color information of 
                     the blocks will be passed to the robot and it will calculate the goal position of each movement. The robot arm picks up the largest 
                     block first and places it to a fixed position. Then it repeats the previous step by finding a smaller block and stack it on the previous one.</p>
@@ -553,6 +552,7 @@
                       ([B-30, G-30, R-30],[B+30, G+30, R+30])). All the contours that matches the RGB boundary would be detected and labeled. Then the contours 
                       will be sorted by area and listed from the largest to the smallest. The node will finally publish a topic containing the center coordinates 
                       of all the contours(sorted by area) in pixel value, and the angles that each contour tilted with respect to x-axis.</p>
+                  <img width="800" height="430" src="img/portfolio/fullsize/color_pick.jpg"></img>
                   <h3>Translation from Pixel Coordinate to World Coordinate</h3>
                   <li>Our group is using the baxter right hand camera to capture the blocks' position on the table. Their positions are caculated from the 
                     blocks' pixel coordinates published by the computer vision. The caculation is based on the following function.</li>>
@@ -560,16 +560,16 @@
                   <li>The intrinsic matrix M_1 is get from the camera calibration using ROS package camera_calibration . 
                     The external matrix  M_2 is obtained from the TF tree from camera to base. Since the table is flat, the z coordinate of the blocks 
                     can be obtained from the IR range sensor in the left hand.</li>
+                  <p></p>
                   <h3>Control</h3>
-                  <p>Baxter was programmed to begin at the same initial position each time. Then when list of blocks' positions reached, the robot arm were 
-                    programmed to reach the certain height over the block, and then the robot arm came down to pick the block. After that, 
-                    the arm moved to the goal position to place the blocks.</p>
-                  <p>For the robot arm control, Cartesian Path Planner Plug-In in MoveIt was used to generate waypoints between beginning position and goal position.
-                     So that the robot arm won't move in unusual way and avoid hitting obstacles. And then, MoveIT planner was used to generate plan to make 
+                  <p>Baxter was programmed to begin at the same initial position each time. Then when list of blocks' positions reached, the robot arm would reach at a 
+                    certain height over the block, and then the robot arm came down to pick the block. After that, the arm moved to the goal position to put down the blocks.</p>
+                  <p>For the robot arm control, Cartesian Path Planner plugin in MoveIt was used to generate waypoints between beginning position and goal position.
+                     So that the robot arm won't move in unusual way and avoid hitting obstacles. And then, MoveIi planner was used to generate plan to make 
                      the arm move to the goal position along the waypoints.</p>
-                  <p>During the movement, the ranger in the left hand was used to detect whether the block was attached to the baxter's left hand successfully or not. 
+                  <p>During the trajection, the range sensor in the left hand was used to detect whether the block was attached to the baxter's left hand successfully or not. 
                     If the distance from left hand was less than 0.1m, the baxter will assume that the block was not picked successfully. 
-                    Then in the next placement, the height of the block being placed will not increase and also the baxter would came to the pick block again, 
+                    Then in the next placement, the height of the block being placed will remain the same and also the baxter would came to the pick block again, 
                     which were not being picked successfully at last time.</p>
                   <h3>Full Demo Video</h3>
                   <iframe width="640" height="360" src="https://www.youtube.com/embed/SKFFj9aCwcA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
