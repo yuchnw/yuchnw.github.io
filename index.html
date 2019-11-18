@@ -684,7 +684,7 @@
                       be used as the desired trajectory for the quad in Gazebo. Since the lightning condition and different skin color would affect the tracking performance a lot,
                        skin color histogram is a useful technique here. The program is taking 900 skin color samples from the user’s hand and then creates a histogram, 
                        using the ROI matrix for the skin color and normalizing this matrix. Then OpenCV will take this histogram to seperate the hand feature from the 
-                       image and apply the skin color to the frame. After that, I find the max contour and calculat the centroid and farthest point from the centroid (which is the longest fingertip).</p>
+                       image and apply the skin color to the frame. This method is inspired from <a href="http://www.benmeline.com/finger-tracking-with-opencv-and-python/">this blog</a>. After that, I find the max contour and calculat the centroid and farthest point from the centroid (which is the longest fingertip).</p>
                     <p>ASUS Xtion Pro depth camera is the deviced I used to capture the 3D position of the fingertip. First I calibrated the RGB image with the depth map to make both are
                        coordinate-aligned. Then I run the OpenCV script on the RGB frame to find the X-Y position of the tip, then parse the pixel value to the depth array generated from 
                        the depth camera and get the distance between the fingertip to the lense. As the user moves the hand either far away to the camera or close to it, the quadcopter can 
