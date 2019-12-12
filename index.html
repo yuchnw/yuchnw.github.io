@@ -163,6 +163,14 @@
       <div class="container-fluid p-0">
         <div class="row no-gutters">
           <div class="col-lg-4 col-sm-6 portfolio-item">
+              <a class="portfolio-link" data-toggle="modal" href="#portfolioModal14">
+                <img class="img-fluid" src="img/portfolio/fullsize/f450.jpg" alt="">
+                <div class="overlay">
+                  <div class="text">DJI F450 Control and Lidar Mapping</div>
+                </div>
+              </a>
+          </div>
+          <div class="col-lg-4 col-sm-6 portfolio-item">
             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal9">
               <img class="img-fluid" src="img/portfolio/fullsize/iris.jpg" alt="">
               <div class="overlay">
@@ -177,7 +185,7 @@
                   <div class="text">Conversational AI</div>
                 </div>
               </a>
-            </div>
+          </div>
           <div class="col-lg-4 col-sm-6 portfolio-item">
             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal12">
               <img class="img-fluid" src="img/portfolio/fullsize/rotor.jpg" alt="">
@@ -218,14 +226,14 @@
                 </div>
               </a>
           </div>
-          <div class="col-lg-4 col-sm-6 portfolio-item">
+          <!-- <div class="col-lg-4 col-sm-6 portfolio-item">
             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
               <img class="img-fluid" src="img/portfolio/fullsize/tracker.jpg" alt="">
               <div class="overlay">
                 <div class="text">Ball Tracker</div>
               </div>
             </a>
-          </div>
+          </div> -->
           <div class="col-lg-4 col-sm-6 portfolio-item">
               <a class="portfolio-link" data-toggle="modal" href="#portfolioModal8">
                 <img class="img-fluid" src="img/portfolio/fullsize/dermatology.jpg" alt="">
@@ -233,7 +241,7 @@
                   <div class="text">Dermatology Diagnose</div>
                 </div>
               </a>
-        </div>
+          </div>
           <!-- <div class="col-lg-4 col-sm-6 portfolio-item">
               <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
                 <img class="img-fluid" src="img/portfolio/fullsize/butt.jpg" alt="">
@@ -911,60 +919,57 @@
                   <!-- Project Details Go Here -->
                   <h2 class="text-uppercase">Quadcopter Lidar Sensing and Mapping</h2>
                   <p class="item-intro text-muted">Individual Project</p>
-                  <h3>Autonomous Path Planning</h3>
-                  <img width="800" height="434" src="img/portfolio/fullsize/bar-fly.gif"></img>
+                  <h3>Flight Control & Tuning</h3>
+                  <img width="800" height="434" src="img/portfolio/fullsize/px4fly.gif"></img>
                   <p></p>
-                  <h3>Fingertip Navigation</h3>
-                  <img width="800" height="450" src="img/portfolio/fullsize/hand_nav.gif"></img>
+                  <h3>Point Cloud Map</h3>
+                  <img width="800" height="450" src="img/portfolio/fullsize/pointcloud.gif"></img>
                   <hr>
                   <h3>Introduction</h3>
                   <p>The goal of this project is to implement 3D mapping for a quadcopter using lidar sensor.
                   <p></p>
-                  <h3>PX4</h3>
-                  <lp>PX4 is the autopilot control platfrom used in this project. It establishes the connection between ROS and Gazebo simulation via MAVROS. 
-                    PX4 supports both Software In the Loop (SITL) simulation, where the flight stack runs on computer (either the same computer or another 
-                    computer on the same network) and Hardware In the Loop (HITL) simulation using a simulation firmware on a real flight controller board.</p>
+                  <h3>Hardware</h3>
+                  <lp>According to PX4 website, it's possible to control multiple types if UAV using pixhawk. However, considering the size of any extra sensor or 
+                    camera, I decided to use DJI Flamewheel F450 and the Pixracer controller. The original drone kit was a pack of parts including 4 motors,
+                     4 propellors, 4 ESCs, 2 main boards, 4 frame bases, and necessary screws. To assemble the quadcopter, I mostly followed the official DJI 
+                     tutorial. However, since I am using pixhawk instead of the included Maza flight controller system, I slightly adjust the arrangement of the 
+                     electronic parts. As the figure shows, the power module is in between of the top board and bottom board, with the battery port and ESCs soldered on. 
+                     The pixhawk and WiFi module(ESP8266) are put at the top board with a piece of foam to reduce vibration.</p>
+                  <img width="800" height="600" src="img/portfolio/fullsize/quad.png"></img>
+                  <img width="800" height="600" src="img/portfolio/fullsize/power.png"></img>
                   <p></p>
-                  <h3>MAVROS--MAVLink</h3>
-                  <p>MAVROS is a ROS package which provides communication driver for various autopilots with MAVLink communication protocal. 
-                    MAVROS can be used to communicate with any MAVLink enabled autopilot, and for this specific project it will be only used to enable 
-                    communication between the PX4 flight stack and a ROS enabled companion computer.</p>
+                  <h3>QGroundControl</h3>
+                  <p>After the assembly being properly done, the quad should be connected and configured at ground station. In this case, QGroundControl has been 
+                    selected since it's the default ground station UI for PX4. Following the instruction online to install QGC on a laptop, the next step would be 
+                    connect/pair the pixhawk with it. After booting the pixracer, the WiFi module plugged on that should be able to establish a local WiFi network 
+                    with the name ArduPilot with password ardupilot. Connect to that network on the laptop and then launch QGC, wait for a few seconds, QGC will show 
+                    that it has successfully connected to the pixhawk. All the parameters and current status of the flight controller will be displayed.</p>
+                  <img width="800" height="600" src="img/portfolio/fullsize/qgc1.png"></img>
+                  <img width="800" height="600" src="img/portfolio/fullsize/qgc1.png"></img>
+                  <img width="800" height="600" src="img/portfolio/fullsize/px4.png"></img>
                   <p></p>
-                  <h3>ROS with Gazebo</h3>
-                  <p>ROS can be used with PX4 and the Gazebo simulator. As the picture below indicates, PX4 communicates with Gazebo to receive sensor data from the simulated 
-                    world and send motor and actuator values. It communicates with the GCS and ROS to send telemetry from the simulated environment and receive commands.</p>
+                  <h3>Companion Computer</h3>
+                  <p>Interfacing a companion computer (Raspberry Pi, Odroid, Tegra K1) to Pixhawk-family boards always works the same way: They are interfaced using a
+                     serial port to TELEM2, the port intended for this purpose. The message format on this link is MAVLink. In order to receive MAVLink, the companion 
+                     computer needs to run some software talking to the serial port. MAVROS has been chosen for this project to communicate to ROS node. Considering the 
+                     available versions of ROS and the device, I decided to build Raspbian Jessie on RPi 3+. </p>
                   <p></p>
-                  <h3>3D-RRT</h3>
-                  <embed src="https://plot.ly/~yuchnw/11.embed" width="800" height="800">
-                  <p>This is the result of the 3D RRT path planning algorithm. Black lines are all the nodes connections,
-                     the green line is the feasible path and the blue line is the optimized path.</p>
+                  <h3>MAVPROXY</h3>
+                  <p>MAVProxy is a fully-functioning GCS for UAV’s. The intent is for a minimalist, portable and extendable GCS for any UAV supporting the MAVLink 
+                    protocol. The companion computer communicates with the master pixhawk flight controller through MAVPROXY. It supports multiple protocols including 
+                    TCP, UDP, USB and serial. This project used serial connection so the connection string for MAVLINK should be /dev/ttyAMA0. Note that the baudrate 
+                    on both the pixhawk and raspberry pi should be set to 57600.</p>
                   <p></p>
-                  <p>After getting a feasible path(the green one), I smoothed it to reduce the number of waypoints(the blue one).
-                     Generally, since the feasible path has been generated from the RRT-grown tree, and it consists of a chain of nodes connections, 
-                     the optimization process is conducted by randomly picking up two nodes from the feasible path, and trying to connect them directly.
-                      Here is the result of the Optimized Path. It takes a more complicated obstacle environment and applies the RRT algorithm. 
-                      The feasible path has 102 waypoints and the number was reduced to 8 after optimization.</p>
+                  <p>Once connection has been established, you can use the connection's mavutil.messages dictionary to synchronously access the last message of a
+                     particular type that was received (and when it was received).</p>
                   <p></p>
-                  <h3>Pilot</h3>
-                  <p>The project is able to take differnt commands to arm, disarm, takeoff, land the quad and return its geographic coordinates. 
-                    Also, it can receive the path generated by RRT algorithm and let the quad follow it. Here is the full demo video:</p>
-                  <iframe width="640" height="360" src="https://www.youtube.com/embed/zPKlL9mI_Lc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <h3>Lidar</h3>
+                  <p>As a compact and high-performace distance measurement device, Garmin Lidar Lite V3 has been used to generate 3D map.</p>
+                  <img width="800" height="600" src="img/portfolio/fullsize/lidar.png"></img>
+                  <p>The rapsberry pi will take the altitude and orientation return from pixhawk through MAVPROXY, and the distance measured by the lidar sensor, to generate 
+                    a customized 3D point cloud data map. The point cloud data would be saved to a *.xyz file and visualized in Meshlab. The gif on top is the point cloud map 
+                    generated from the lidar sensor when the quad is scanning the corner of the lab room.</p>
                   <p></p>
-                  <h3>Tracking</h3>
-                  <p>First, I used OpenCV to track my hand's movement and find the farthest fingertip. As my hand moves, the fingertip will create a path that could 
-                    be used as the desired trajectory for the quad in Gazebo. Since the lightning condition and different skin color would affect the tracking performance a lot,
-                     skin color histogram is a useful technique here. The program is taking 900 skin color samples from the user’s hand and then creates a histogram, 
-                     using the ROI matrix for the skin color and normalizing this matrix. Then OpenCV will take this histogram to seperate the hand feature from the 
-                     image and apply the skin color to the frame. After that, I find the max contour and calculat the centroid and farthest point from the centroid (which is the longest fingertip).</p>
-                  <p>ASUS Xtion Pro depth camera is the deviced I used to capture the 3D position of the fingertip. First I calibrated the RGB image with the depth map to make both are
-                     coordinate-aligned. Then I run the OpenCV script on the RGB frame to find the X-Y position of the tip, then parse the pixel value to the depth array generated from 
-                     the depth camera and get the distance between the fingertip to the lense. As the user moves the hand either far away to the camera or close to it, the quadcopter can 
-                    also adjust its altitute respectively.</p>
-                  <p></p>
-                  <p>Here is the demo of the fingertip tracking result: (to keep the frame clean, only the last 20 fingertip trace would be displayed on the screen)</p>
-                  <img width="800" height="640" src="img/portfolio/fullsize/finger.gif"></img>
-                  <p>After getting the X-Y coordinate of the fingertip through the RGB image layer, I calibrated it with the depth image layer where could return the distance between 
-                    the fingertip and the lense. Then I synced the X-Y-Z trajectory generated by hand detection to the PX4 pilot program, considering the trace of fingertip as waypoints for the quadcopter.</p>
                   <hr>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fas fa-times"></i>
