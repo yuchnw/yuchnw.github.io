@@ -479,9 +479,7 @@ mark,
 }
 
 .img-fluid {
-  max-width: 100%;
-  height: auto;
-  max-height:100%;
+  width: 100%;
 }
 
 .img-thumbnail {
@@ -870,6 +868,7 @@ pre code {
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
     max-width: 50%;
+    padding: 0px;
   }
   .col-sm-7 {
     -ms-flex: 0 0 58.333333%;
@@ -1204,6 +1203,7 @@ pre code {
     -ms-flex: 0 0 33.333333%;
     flex: 0 0 33.333333%;
     max-width: 33.333333%;
+    padding: 0px;
   }
   .col-lg-5 {
     -ms-flex: 0 0 41.666667%;
