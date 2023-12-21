@@ -479,7 +479,7 @@ mark,
 }
 
 .img-fluid {
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .img-thumbnail {
